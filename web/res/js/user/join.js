@@ -3,7 +3,7 @@
     const joinFrmElem = document.querySelector('#join-frm');
     const idChkMsgElem = joinFrmElem.querySelector('#id-Chk-msg');
     const idRegex = /^([a-zA-Z0-9]{4,15})$/; // 대소문자 + 숫자 조합으로 4~15 글자만 가능.
-    const pwRegex =/^([a-zA-Z0-9!@_]{4,20})$/; // 대소문자 + 숫자 !@_ 조합으로 4~20 글자만 가능.
+    const pwRegex = /^([a-zA-Z0-9!@_]{4,20})$/; // 대소문자 + 숫자 !@_ 조합으로 4~20 글자만 가능.
     const nmRegex = /^([가-힣]{2,6})$/;
     const msg1 = '아이디는 대소문자, 숫자 조합으로 4~15글자가 되어야 합니다.';
 
