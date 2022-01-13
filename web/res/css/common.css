@@ -30,12 +30,14 @@ ul { list-style: none; }
 .h-all { height: 100%; }
 .hidden { display: none; }
 
-.menu-selected { font-weight: bold; }
-.menu-selected a { color: yellow; }
-
 .m-r-5 { margin-right: 5px; }
 .m-r-10 { margin-right: 10px; }
 .m-r-20 { margin-right: 20px; }
+
+.menu-selected { font-weight: bold; }
+.menu-selected a { color: yellow; }
+
+.msg {color: #fc0000; font-weight: bold;}
 
 .p-5 { padding: 5px; }
 .p-10 { padding: 10px; }

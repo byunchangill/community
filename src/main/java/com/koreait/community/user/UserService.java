@@ -3,6 +3,7 @@ package com.koreait.community.user;
 import com.koreait.community.Const;
 import com.koreait.community.MyFileUtils;
 import com.koreait.community.UserUtils;
+import com.koreait.community.model.UserDTO;
 import com.koreait.community.model.UserEntity;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.BeanUtils;
@@ -86,5 +87,16 @@ public class UserService {
         loginUser.setProfileImg(fileNm);
 
         return fileNm;
+    }
+
+    public int changePassword(UserDTO dto) {
+        dto.setIuser(userUtils.getLoginUserPk());
+        UserEntity dbUser = mapper.selUser(dto);
+        if(BCrypt.checkpw(dto.getCurrentUpw(), dbUser.getUpw())) {
+            return 2; // 현재 비밀번호 다름.
+        }
+        String hashPw = BCrypt.hashpw(dto.getUpw(), BCrypt.gensalt());
+        dto.setUpw(hashPw);
+        return mapper.updUser(dto);
     }
 }

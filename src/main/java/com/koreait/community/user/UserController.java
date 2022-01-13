@@ -1,6 +1,7 @@
 package com.koreait.community.user;
 
 import com.koreait.community.Const;
+import com.koreait.community.model.UserDTO;
 import com.koreait.community.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -86,10 +87,20 @@ public class UserController {
     public void password() {}
 
     // 비밀번호 변경 및 확인
-    @ResponseBody
     @PostMapping("/mypage/password")
-    public String passwordProc(String pw, HttpSession session) throws Exception {
-
-    return "";
+    public String passwordProc(UserDTO dto, HttpSession session, RedirectAttributes rAttr) {
+        int result = service.changePassword(dto);
+    if(result != 1) {
+        switch (result) {
+            case 0:
+                rAttr.addFlashAttribute(Const.MSG, "비밀번호 변경에 실패 하였습니다.");
+                break;
+            case 2:
+                rAttr.addFlashAttribute(Const.MSG, "현재 비밀번호를 확인해 주세요.");
+                break;
+        }
+        return "redirect:/user/mypage/password";
+    }
+    return "redirect:/user/login";
     }
 }
