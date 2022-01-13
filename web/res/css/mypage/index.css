@@ -1,0 +1,5 @@
+@charset "utf-8";
+ul > li:not(:first-child) { margin-top: 10px; }
+
+.submenu-section { display: grid; grid-template-columns: 150px 1fr; height: 100%; }
+.submenu-section > div:first-child { background-color: #efefef; }

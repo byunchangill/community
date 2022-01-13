@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.koreait.community.user.UserMapper">
+    <select id="selUser" resultType="UserEntity">
+        SELECT * FROM t_user WHERE uid = #{uid}
+    </select>
+    <insert id="join">
+        INSERT INTO t_user(uid, upw, nm, gender) VALUES (#{uid}, #{upw}, #{nm}, ${gender})
+    </insert>
+
+    <update id="updUser">
+        UPDATE t_user
+        SET
+        <if test=" upw != null and upw != '' ">
+            upw = #{upw}
+        </if>
+        <if test=" profileImg != null and profileImg != '' ">
+            profileImg = #{profileImg}
+        </if>
+        WHERE iuser = ${iuser}
+    </update>
+</mapper>

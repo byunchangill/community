@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <definition name="tiles_template" template="/WEB-INF/views/temp/tiles_layout.jsp" preparer="MenuPreparer">
+        <put-attribute name="header" value="/WEB-INF/views/temp/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/views/temp/footer.jsp" />
+        <put-attribute name="common" value="common" />
+        <put-attribute name="title" value="커뮤니티" />
+    </definition>
+
+    <definition name="basic.*.*" template="/WEB-INF/views/temp/basic_container.jsp">
+        <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+
+    <definition name="*/*" extends="tiles_template">
+        <put-attribute name="body" value="basic.{1}.{2}" />
+        <put-attribute name="title" value="{2}" />
+        <put-attribute name="addr1" value="{1}" />
+        <put-attribute name="addr2" value="{1}/{2}" />
+    </definition>
+
+    <definition name="submenu.*.*" template="/WEB-INF/views/temp/submenu_container.jsp">
+        <put-attribute name="content" value="/WEB-INF/views/user/{1}/{2}.jsp" cascade="true" />
+    </definition>
+
+    <definition name="user/*/*" extends="tiles_template">
+        <put-attribute name="body" value="submenu.{1}.{2}" />
+        <put-attribute name="title" value="{2}" />
+        <put-attribute name="addr1" value="{1}" />
+        <put-attribute name="addr2" value="{1}/{2}" />
+    </definition>
+
+</tiles-definitions>
