@@ -34,6 +34,8 @@ ul { list-style: none; }
 .m-r-10 { margin-right: 10px; }
 .m-r-20 { margin-right: 20px; }
 
+.m-t-20 { margin-top: 20px; }
+
 .menu-selected { font-weight: bold; }
 .menu-selected a { color: yellow; }
 

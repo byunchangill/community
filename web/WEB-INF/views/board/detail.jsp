@@ -15,3 +15,20 @@
     <div>제목: <c:out value="${data.title}" /></div>
     <div><c:out value="${data.ctnt}" /></div>
 </div>
+<div>
+    <c:if test="${requestScope.prevNext.previboard > 0}">
+        <a href="/board/detail?iboard=${requestScope.prevNext.previboard}"><button>이전글</button></a>
+    </c:if>
+    <c:if test="${requestScope.prevNext.nextiboard > 0}">
+        <a href="/board/detail?iboard=${requestScope.prevNext.nextiboard}"><button>다음글</button></a>
+    </c:if>
+</div>
+<c:if test="${sessionScope.loginUser != null}">
+    <div class="m-t-20">
+        <form id="cmtFrm">
+            <input type="text" name="ctnt">
+            <input type="button" id="btn_submit" value="댓글달기">
+        </form>
+    </div>
+</c:if>
+<div class="m-t-20">댓글 리스트</div>

@@ -68,7 +68,7 @@
                return;
            }
 
-           fetch(`/user/idChk/${idVal}`)
+/*           fetch(`/user/idChk/${idVal}`)
                .then(res => res.json())
                .then((data) => {
                    console.log(data);
@@ -76,6 +76,10 @@
                }).catch((e) => {
                     console.log(e);
            });
+*/
+            myFetch.get(`/user/idChk/${idVal}`, (data) => {
+                setIdChkMsg(data);
+            });
         });
     }
 }
